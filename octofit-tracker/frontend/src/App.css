@@ -1,0 +1,231 @@
+/* ===================================================
+   OctoFit Tracker – global shell styles
+   Bootstrap handles utilities; these rules layer
+   branding and consistent component overrides.
+   =================================================== */
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(88, 184, 172, 0.16), transparent 33%),
+    radial-gradient(circle at 90% 0%, rgba(12, 108, 116, 0.14), transparent 30%),
+    linear-gradient(180deg, #eef9f7 0%, #f9fdfd 45%, #f5fbfa 100%);
+  color: #17343e;
+}
+
+/* ── Bootstrap Navbar ─────────────────────────────── */
+.app-navbar {
+  background: linear-gradient(135deg, #16404d 0%, #0c6c74 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 6px 16px rgba(12, 108, 116, 0.28);
+}
+
+.app-navbar .navbar-brand {
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.app-logo {
+  background-color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(7, 35, 41, 0.2);
+  height: 34px;
+  object-fit: contain;
+  padding: 2px;
+  width: 34px;
+}
+
+.app-navbar .navbar-brand:hover {
+  color: #d4f0ec;
+}
+
+.app-navbar .nav-link {
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 500;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.app-navbar .nav-link:hover,
+.app-navbar .nav-link:focus-visible {
+  background-color: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+
+.app-navbar .nav-link.active {
+  background-color: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.app-navbar .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.40);
+}
+
+.app-navbar .navbar-toggler-icon {
+  filter: brightness(0) invert(1);
+}
+
+/* ── Hero banner ───────────────────────────────────── */
+.app-hero {
+  background:
+    radial-gradient(circle at top right, rgba(7, 111, 130, 0.14), transparent 35%),
+    linear-gradient(135deg, #f2fbf9 0%, #dfeeed 100%);
+}
+
+.app-hero h1 {
+  color: #0f4f58;
+}
+
+.eyebrow {
+  color: #0b6670;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.resource-section h2,
+.resource-section h5 {
+  color: #114955;
+}
+
+.resource-section p,
+.resource-section td,
+.resource-section small,
+.resource-section .text-muted,
+.resource-meta {
+  color: #35515a;
+}
+
+.resource-section a,
+.resource-section .link-secondary {
+  color: #0d6f79 !important;
+  text-decoration-color: rgba(13, 111, 121, 0.45);
+}
+
+.resource-section a:hover,
+.resource-section .link-secondary:hover {
+  color: #0a5660 !important;
+}
+
+/* ── Resource / data sections ──────────────────────── */
+.resource-section .card {
+  border: 1px solid #cce0dd;
+  border-radius: 0.875rem;
+  overflow: hidden;
+}
+
+.resource-section .card-header {
+  background:
+    linear-gradient(135deg, #edf8f7 0%, #e3f2f0 100%);
+  border-bottom: 1px solid #cce0dd;
+}
+
+.resource-section .card-header .btn,
+.resource-section .card-body .btn,
+.resource-section .card-footer .btn {
+  border-radius: 0.55rem;
+}
+
+.resource-section .btn-primary {
+  background-color: #0f6e78;
+  border-color: #0f6e78;
+  color: #ffffff;
+}
+
+.resource-section .btn-primary:hover,
+.resource-section .btn-primary:focus-visible {
+  background-color: #0c5961;
+  border-color: #0c5961;
+}
+
+.resource-section .btn-outline-primary {
+  border-color: #0f6e78;
+  color: #0f6e78;
+}
+
+.resource-section .btn-outline-primary:hover,
+.resource-section .btn-outline-primary:focus-visible {
+  background-color: #0f6e78;
+  border-color: #0f6e78;
+  color: #ffffff;
+}
+
+.resource-section .btn-outline-secondary {
+  border-color: #6e8a92;
+  color: #3a5961;
+}
+
+.resource-section .btn-outline-secondary:hover,
+.resource-section .btn-outline-secondary:focus-visible {
+  background-color: #3a5961;
+  border-color: #3a5961;
+  color: #ffffff;
+}
+
+/* Dark thead for all data tables */
+.resource-section .table thead th {
+  background-color: #16404d;
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: none;
+  vertical-align: middle;
+  padding: 0.85rem 1rem;
+}
+
+.resource-section .table tbody td {
+  vertical-align: middle;
+  padding: 0.75rem 1rem;
+  border-color: #e3f0ee;
+}
+
+.resource-section .table tbody tr:hover > td {
+  background-color: #e8f5f3;
+}
+
+.resource-section .table tbody tr:nth-child(even) > td {
+  background-color: #fbfefe;
+}
+
+.resource-section .badge.bg-secondary {
+  background-color: #35515a !important;
+}
+
+.resource-section .badge.bg-primary {
+  background-color: #0f6e78 !important;
+}
+
+.resource-section .badge.bg-success {
+  background-color: #198754 !important;
+}
+
+.resource-section .badge.bg-info {
+  background-color: #7fd7e4 !important;
+}
+
+.resource-section .card-footer {
+  background-color: #f5fbfa;
+  border-top: 1px solid #e3f0ee;
+}
+
+/* ── Empty / error states ──────────────────────────── */
+.resource-empty {
+  background-color: #f7fbfb;
+  border: 2px dashed #bfd4d1;
+  border-radius: 0.875rem;
+  padding: 3rem 2rem;
+  text-align: center;
+  color: #5f6f72;
+}
+
+.resource-meta {
+  color: #48636a;
+  font-size: 0.9rem;
+}
