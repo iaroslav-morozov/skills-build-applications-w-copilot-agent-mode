@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+  background:
+    linear-gradient(180deg, #f4fbfa 0%, #ffffff 32%),
+    linear-gradient(135deg, rgba(22, 64, 77, 0.05), transparent 40%);
+  color: #16313d;
+  font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+a {
+  color: inherit;
+}
