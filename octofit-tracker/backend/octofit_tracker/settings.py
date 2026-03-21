@@ -20,11 +20,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-30tqctun5y89%x9wmcxc6sgb=h0dozkv2cgf7aij@(-)kgeovy'
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
+
+# SECURITY WARNING: keep the secret key used in production secret!
+_secret_key_default = 'dev-only-secret-key-change-me'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', _secret_key_default)
+if SECRET_KEY == _secret_key_default and not DEBUG:
+    raise RuntimeError(
+        "DJANGO_SECRET_KEY environment variable must be set when DEBUG is False."
+    )
 
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
@@ -95,10 +100,20 @@ DATABASES = {
     }
 }
 # CORS settings
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOW_HEADERS = ['*']
-CORS_ALLOW_METHODS = ['*']
+CORS_ALLOW_ALL_ORIGINS = False
+
+# Allow only known frontend origins (local dev and Codespaces)
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+codespace_name = os.environ.get('CODESPACE_NAME')
+if codespace_name:
+    CORS_ALLOWED_ORIGINS.append(f"https://{codespace_name}-3000.app.github.dev")
+
+# Disable credentials by default; enable only if cross-origin cookies are needed
+CORS_ALLOW_CREDENTIALS = False
+# Rely on django-cors-headers defaults for allowed headers and methods
 
 # Custom user model
 AUTH_USER_MODEL = 'octofit_tracker.User'
