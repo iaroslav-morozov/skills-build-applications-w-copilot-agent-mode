@@ -21,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-30tqctun5y89%x9wmcxc6sgb=h0dozkv2cgf7aij@(-)kgeovy'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dev-only-secret-key-change-me')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
@@ -95,10 +95,19 @@ DATABASES = {
     }
 }
 # CORS settings
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = False
+
+# Allow only known frontend origins (local dev and Codespaces)
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+codespace_name = os.environ.get('CODESPACE_NAME')
+if codespace_name:
+    CORS_ALLOWED_ORIGINS.append(f"https://{codespace_name}-3000.app.github.dev")
+
+# Allow credentials for these trusted origins
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOW_HEADERS = ['*']
-CORS_ALLOW_METHODS = ['*']
+# Rely on django-cors-headers defaults for allowed headers and methods
 
 # Custom user model
 AUTH_USER_MODEL = 'octofit_tracker.User'
