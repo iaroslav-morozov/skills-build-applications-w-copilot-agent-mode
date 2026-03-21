@@ -21,15 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
+DEBUG = True
 
 # SECURITY WARNING: keep the secret key used in production secret!
-_secret_key_default = 'dev-only-secret-key-change-me'
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', _secret_key_default)
-if SECRET_KEY == _secret_key_default and not DEBUG:
-    raise RuntimeError(
-        "DJANGO_SECRET_KEY environment variable must be set when DEBUG is False."
-    )
+# This key is for development only. Replace with a secure value via the
+# DJANGO_SECRET_KEY environment variable before deploying to production.
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-octofit-tracker-dev-secret-key')
 
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
